@@ -115,6 +115,11 @@ export default defineConfig((config) => {
         buffer: 'vite-plugin-node-polyfills/polyfills/buffer',
       },
     },
+    server: {
+      allowedHosts: [
+        'boltdiy-production-50ca.up.railway.app', // Добавьте ваш хост здесь
+      ],
+    },
     plugins: [
       nodePolyfills({
         include: ['buffer', 'process', 'util', 'stream'],
@@ -124,7 +129,6 @@ export default defineConfig((config) => {
           global: true,
         },
         protocolImports: true,
-        // Exclude Node.js modules that shouldn't be polyfilled in Cloudflare
         exclude: ['child_process', 'fs', 'path'],
       }),
       {
